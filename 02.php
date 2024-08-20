@@ -45,7 +45,7 @@ function connectDB() {
                 $conn = connectDB();
 
                 // users 테이블에서 모든 데이터 가져오기
-                $sql = "SELECT id, password, name, birthdate, department, signup_datetime FROM users";
+                $sql = "SELECT id, password, name, birthdate, department, signup_datetime FROM users order by name asc";
                 $result = $conn->query($sql);
 
                 // 데이터가 있는지 확인
@@ -55,6 +55,9 @@ function connectDB() {
                         echo "<tr>";
                         echo "<td>" . htmlspecialchars($row["id"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["password"]) . "</td>";
+
+                        // 출신학교
+
                         echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["birthdate"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["department"]) . "</td>";

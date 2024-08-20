@@ -1,5 +1,17 @@
 수원대학교 SQL 데이터분석 과정
 
+http://localhost/02.php
+
+lotto[0] = 1;
+lotto[1] = 2;
+...
+lotto[10] = 33;
+
+dict["apple"] = "사과";
+dict["desk"] = "책상";
+
+연관배열 , associative array
+
 <<<<<<< HEAD
 [Q] 
 
