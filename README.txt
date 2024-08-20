@@ -1,5 +1,32 @@
 수원대학교 SQL 데이터분석 과정
 
+CREATE TABLE mytable ( 
+    -- 주석처리
+    id  CHAR(30) UNIQUE,
+    name    VARCHAR(30),
+    pass    VARCHAR(255),
+    birth   DATE,
+    memo    TEXT,
+    regist  DATETIME
+);
+
+INSERT INTO mytable (id, name, pass, birth, memo, regist) 
+            VALUES ('test', '테스트', '1111', '2000-01-01', '메모테스트', now() );
+
+정보통신보호법 비밀번호의 날데이터(Raw Data) 직접볼 수 있으면 불법
+
+
+CREATE TABLE users (
+    id VARCHAR(20) PRIMARY KEY,               -- 아이디 (최대 20자, 기본 키, 고유해야 함)
+    password VARCHAR(255) NOT NULL,           -- 비밀번호 (암호화된 상태로 저장)
+    name VARCHAR(100) NOT NULL,               -- 이름 (필수 입력)
+    birthdate DATE,                           -- 생년월일 (YYYY-MM-DD 형식)
+    department VARCHAR(100),                  -- 학과 (선택 입력)
+    signup_datetime DATETIME DEFAULT CURRENT_TIMESTAMP -- 가입일 및 시간 (자동으로 현재 시간 설정)
+);
+
+
+
 [Q]
 다음과 같은 작업을 위한 데이터베이스 명령을 알려줘.
 데이터베이스 이름 :  mydb
