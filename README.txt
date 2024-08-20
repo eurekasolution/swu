@@ -1,5 +1,72 @@
 수원대학교 SQL 데이터분석 과정
 
+CREATE TABLE mytable ( 
+    -- 주석처리
+    id  CHAR(30) UNIQUE,
+    name    VARCHAR(30),
+    pass    VARCHAR(255),
+    birth   DATE,
+    memo    TEXT,
+    regist  DATETIME
+);
+
+INSERT INTO mytable (id, name, pass, birth, memo, regist) 
+            VALUES ('test', '테스트', '1111', '2000-01-01', '메모테스트', now() );
+
+정보통신보호법 비밀번호의 날데이터(Raw Data) 직접볼 수 있으면 불법
+
+
+CREATE TABLE users (
+    id VARCHAR(20) PRIMARY KEY,               -- 아이디 (최대 20자, 기본 키, 고유해야 함)
+    password VARCHAR(255) NOT NULL,           -- 비밀번호 (암호화된 상태로 저장)
+    name VARCHAR(100) NOT NULL,               -- 이름 (필수 입력)
+    birthdate DATE,                           -- 생년월일 (YYYY-MM-DD 형식)
+    department VARCHAR(100),                  -- 학과 (선택 입력)
+    signup_datetime DATETIME DEFAULT CURRENT_TIMESTAMP -- 가입일 및 시간 (자동으로 현재 시간 설정)
+);
+
+다음과 같이 테이블이 정의되어 있어. 
+CREATE TABLE users (
+    id VARCHAR(20) PRIMARY KEY,               -- 아이디 (최대 20자, 기본 키, 고유해야 함)
+    password VARCHAR(255) NOT NULL,           -- 비밀번호 (암호화된 상태로 저장)
+    name VARCHAR(100) NOT NULL,               -- 이름 (필수 입력)
+    birthdate DATE,                           -- 생년월일 (YYYY-MM-DD 형식)
+    department VARCHAR(100),                  -- 학과 (선택 입력)
+    signup_datetime DATETIME DEFAULT CURRENT_TIMESTAMP -- 가입일 및 시간 (자동으로 현재 시간 설정)
+);
+
+이 때 다음의 조건에 맞는 데이터 입력 스크립트 20개를 만들어 줘.
+- id : 영문 5~10글자이의 무작위 영문 소문자.
+- name : 역사 인물
+- 비밀번호 : 무작위
+- 생년월일은 1980년부터 2010년까지의 무작위 수
+- 학과는 컴퓨터, 전자, 전기 중 하나
+- signup_datetime는 now()
+
+
+INSERT INTO users (id, password, name, birthdate, department, signup_datetime) VALUES
+('aeijw', 'password1', '이순신', '1995-07-15', '컴퓨터', NOW()),
+('xzyqsl', 'password2', '세종대왕', '1984-12-03', '전자', NOW()),
+('plwqtk', 'password3', '강감찬', '2001-02-21', '전기', NOW()),
+('bwxei', 'password4', '김유신', '1987-10-08', '컴퓨터', NOW()),
+('nmkiue', 'password5', '장보고', '1993-05-17', '전자', NOW()),
+('qpltz', 'password6', '을지문덕', '2008-09-14', '전기', NOW()),
+('zkmivn', 'password7', '연개소문', '1990-11-26', '컴퓨터', NOW()),
+('trpqxm', 'password8', '윤봉길', '1983-01-12', '전자', NOW()),
+('vlkqe', 'password9', '안중근', '2010-06-22', '전기', NOW()),
+('abshqi', 'password10', '김구', '1997-03-30', '컴퓨터', NOW()),
+('qwpdlk', 'password11', '유관순', '2003-08-11', '전자', NOW()),
+('xmpiue', 'password12', '신사임당', '1989-04-05', '전기', NOW()),
+('trszmk', 'password13', '정약용', '2015-12-19', '컴퓨터', NOW()),
+('lzwrke', 'password14', '최영', '2000-02-08', '전자', NOW()),
+('qwpels', 'password15', '이성계', '1988-07-27', '전기', NOW()),
+('bqxelt', 'password16', '박정희', '1999-10-10', '컴퓨터', NOW()),
+('zxwepm', 'password17', '김대중', '2012-05-13', '전자', NOW()),
+('vlpwqt', 'password18', '노무현', '1985-03-09', '전기', NOW()),
+('wqtxms', 'password19', '김일성', '2006-11-04', '컴퓨터', NOW()),
+('mzxwel', 'password20', '김정일', '1992-06-28', '전자', NOW());
+
+
 [Q]
 다음과 같은 작업을 위한 데이터베이스 명령을 알려줘.
 데이터베이스 이름 :  mydb
