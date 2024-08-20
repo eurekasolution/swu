@@ -19,6 +19,16 @@ $name3 = "포,민,하,구,훈,림,주,진,훈,의,우,선,현,근,석,용,식,�
 - $name2와 $name3에서 랜덤하게 추출한 값이 같지 않아야 함.
 
 
+순서	이름	생년월일	나이
+
+CREATE TABLE fake (
+    idx     int(10) auto_increment primary key,
+    name    char(30) not null,
+    birth   date,
+    age     int
+);
+
+
 
 $max = 100;
 
