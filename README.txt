@@ -1,5 +1,18 @@
 수원대학교 SQL 데이터분석 과정
 
+[Q]
+다음과 같은 작업을 위한 데이터베이스 명령을 알려줘.
+데이터베이스 이름 :  mydb
+데이터베이스 사용자 : myuser
+비밀번호 : mypass
+- mydb를 사용 가능한 id : myuser
+- myuser는 모든 권한을 가짐
+- localhost에서 접속 허용
+
+CREATE USER 'myuser'@'localhost' IDENTIFIED BY 'mypass';
+GRANT ALL PRIVILEGES ON mydb.* TO 'myuser'@'localhost';
+FLUSH PRIVILEGES;
+
 Apache, MySQL 실행후 항상 다음에 접속
 
 http://localhost/phpmyadmin
