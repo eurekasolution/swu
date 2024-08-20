@@ -1,5 +1,19 @@
 수원대학교 SQL 데이터분석 과정
 
+[Q] 다음과 같은 03.php 프로그램을 하나  만들어줘.
+- HTML5와 Bootstrap5를 이용
+- <form>을 만드는데 입력값은 다음과 같다.
+   - <input type="number" name="datacount" min="100" max="100000" step="100">
+   - 실행 버튼
+- 실행버튼을 누르면 다음과 같이 동작함
+  - datacount만큼 테이블 형태의 데이터를 만든다. 
+  - 순서, 이름, 생년월일, 출신학교를 출력한다.
+  - 순서는 1부터 순차적으로 증가
+  - 생년월일은 1900년부터 2000년 사이의 랜덤 날짜
+  - 이름 : 운동선수 이름
+  - 출신학교 : 서울대, 수원대, 제주대, 경상대, 전라대, 강원대 중 랜덤하게 선택
+
+
 http://localhost/02.php
 
 lotto[0] = 1;
@@ -12,7 +26,6 @@ dict["desk"] = "책상";
 
 연관배열 , associative array
 
-<<<<<<< HEAD
 [Q] 
 
 PHP와 MySQL을 연동해서 다음의 조건에 맞는 코드를 만들어줘.
@@ -26,6 +39,11 @@ HTML의 Header에는 Bootstrap5포함
 users의 모든 항목을 테이블 형태로 출력해줘.
 
 
+$sql = "select * from users";
+$result = mysqli_query($conn, $sql);
+$data = mysqli_fetch_arary($result);
+
+
 1. DB -> TABLE -> INSERT -> SELECT
 
     SELECT 필드1, 필드2, .... FROM 테이블 WHERE 조건
@@ -37,8 +55,6 @@ users의 모든 항목을 테이블 형태로 출력해줘.
 
 
 
-=======
->>>>>>> 44a8ff98ac567ffdc704f22acd6be1b7ee3442b9
 CREATE TABLE mytable ( 
     -- 주석처리
     id  CHAR(30) UNIQUE,

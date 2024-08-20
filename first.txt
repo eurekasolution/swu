@@ -1,50 +1,21 @@
-insert into test_table (idx, name, birth, local) values ('mother match motd test');
-insert into test_table (idx, name, birth, local) values ('안녕하세요010-123a-1234010-1111-2222한글테스트111-1111-1111홍길동');
-insert into test_table (idx, name, birth, local) values ('mother match motd test');
-insert into test_table (idx, name, birth, local) values ('안녕하세요010-123a-1234010-1111-2222한글테스트111-1111-1111홍길동');
-insert into test_table (idx, name, birth, local) values ('mother match motd test');
-insert into test_table (idx, name, birth, local) values ('안녕하세요010-123a-1234010-1111-2222한글테스트111-1111-1111홍길동');
-insert into test_table (idx, name, birth, local) values ('mother match motd test');
-insert into test_table (idx, name, birth, local) values ('안녕하세요010-123a-1234010-1111-2222한글테스트111-1111-1111홍길동');
-insert into test_table (idx, name, birth, local) values ('mother match motd test');
-insert into test_table (idx, name, birth, local) values ('안녕하세요010-123a-1234010-1111-2222한글테스트111-1111-1111홍길동');
-insert into test_table (idx, name, birth, local) values ('찾기 : Ctrl+F ');
-insert into test_table (idx, name, birth, local) values ('찾아바꾸기 : Ctrl+H');
-insert into test_table (idx, name, birth, local) values ('m[ao]t ');
-insert into test_table (idx, name, birth, local) values ('010-[0-9]{4}-[0-9]{4}');
-insert into test_table (idx, name, birth, local) values ('');
-insert into test_table (idx, name, birth, local) values ('create table test_table (');
-insert into test_table (idx, name, birth, local) values ('    idx int(1),');
-insert into test_table (idx, name, birth, local) values ('    name char(20),');
-insert into test_table (idx, name, birth, local) values ('    birth date,');
-insert into test_table (idx, name, birth, local) values ('    local char(20)');
-insert into test_table (idx, name, birth, local) values (');');
-insert into test_table (idx, name, birth, local) values ('');
-insert into test_table (idx, name, birth, local) values ('insert into test_table (idx, name, birth, local) values ('1', '이순신', '1995-07-15', '서울');');
-insert into test_table (idx, name, birth, local) values ('');
-insert into test_table (idx, name, birth, local) values ('\t  -> ','');
-insert into test_table (idx, name, birth, local) values ('$   -> ');');
-insert into test_table (idx, name, birth, local) values ('^ -> insert into test_table (idx, name, birth, local) values ('
-insert into test_table (idx, name, birth, local) values ('순서','이름','생년월일','지역');
+순서	이름	생년월일	지역
+1	이순신	1995-07-15	서울
+2	세종대왕	1984-12-03	경기
+3	강감찬	2001-02-21	충청
+4	김유신	1987-10-08	서울
+5	장보고	1993-05-17	경기
+6	을지문덕	2008-09-14	충청
+7	연개소문	1990-11-26	서울
+8	윤봉길	1983-01-12	경기
+9	안중근	2010-06-22	충청
+10	김구	1997-03-30	서울
 
 
-insert into test_table (idx, name, birth, local) values ('1','이순신','1995-07-15','서울');
-insert into test_table (idx, name, birth, local) values ('2','세종대왕','1984-12-03','경기');
-insert into test_table (idx, name, birth, local) values ('3','강감찬','2001-02-21','충청');
-insert into test_table (idx, name, birth, local) values ('4','김유신','1987-10-08','서울');
-insert into test_table (idx, name, birth, local) values ('5','장보고','1993-05-17','경기');
-insert into test_table (idx, name, birth, local) values ('6','을지문덕','2008-09-14','충청');
-insert into test_table (idx, name, birth, local) values ('7','연개소문','1990-11-26','서울');
-insert into test_table (idx, name, birth, local) values ('8','윤봉길','1983-01-12','경기');
-insert into test_table (idx, name, birth, local) values ('9','안중근','2010-06-22','충청');
-insert into test_table (idx, name, birth, local) values ('10','김구','1997-03-30','서울');
-insert into test_table (idx, name, birth, local) values ('11','유관순','2003-08-11','경기');
-insert into test_table (idx, name, birth, local) values ('12','신사임당','1989-04-05','충청');
-insert into test_table (idx, name, birth, local) values ('13','정약용','2015-12-19','서울');
-insert into test_table (idx, name, birth, local) values ('14','최영','2000-02-08','경기');
-insert into test_table (idx, name, birth, local) values ('15','이성계','1988-07-27','충청');
-insert into test_table (idx, name, birth, local) values ('16','박정희','1999-10-10','서울');
-insert into test_table (idx, name, birth, local) values ('17','김대중','2012-05-13','경기');
-insert into test_table (idx, name, birth, local) values ('18','노무현','1985-03-09','충청');
-insert into test_table (idx, name, birth, local) values ('19','김일성','2006-11-04','서울');
-insert into test_table (idx, name, birth, local) values ('20','김정일','1992-06-28','경기');
+insert into test_table (idx, name, birth, local) values ('이순신', '1995-07-15', '서울');
+	이순신	1995-07-15	서울
+1. 탭(\t)을 찾아 ==> ','
+	1','이순신','1995-07-15','서울
+2. 마지막($)을 찾아서 ==> ');
+    1','이순신','1995-07-15','서울');
+3. 처음(^)을 찾아서 ==> insert into test_table (idx, name, birth, local) values ('
+    insert into test_table (idx, name, birth, local) values ('1','이순신','1995-07-15','서울');
