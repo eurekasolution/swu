@@ -1,6 +1,24 @@
 수원대학교 SQL 데이터분석 과정
 
-테스트합니다.
+Apache, MySQL 실행후 항상 다음에 접속
+
+http://localhost/phpmyadmin
+
+DB : swu
+ID : swu
+PW : 1111
+
+create table first (
+    id  char(20),
+    name char(20)
+);
+
+insert into first (id, name) values('test', '테스트');
+insert into first (id, name) values('admin', '관리자');
+insert into first (id, name) values('sslee', '이순신');
+insert into first (id, name) values('kwang', '광개토');
+
+환경설정 확인 완료(한글 깨짐을 확인)
 
 [Excel]
 
