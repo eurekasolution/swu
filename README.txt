@@ -1,5 +1,29 @@
 수원대학교 SQL 데이터분석 과정
 
+[Q] 
+
+PHP와 MySQL을 연동해서 다음의 조건에 맞는 코드를 만들어줘.
+- HTML5와 BootStrap5를 이용
+- $conn = connectDB() 함수를 생성
+- 데이터베이스 이름 : swu
+- 사용자 아이디 : swu
+- 비밀번호 : 1111
+
+HTML의 Header에는 Bootstrap5포함
+users의 모든 항목을 테이블 형태로 출력해줘.
+
+
+1. DB -> TABLE -> INSERT -> SELECT
+
+    SELECT 필드1, 필드2, .... FROM 테이블 WHERE 조건
+
+    SELECT id, name FROM users WHERE birthdate > '2000-01-01';
+
+    SELECT * FROM users ORDER BY birthdate ASC, name DESC;
+
+
+
+
 CREATE TABLE mytable ( 
     -- 주석처리
     id  CHAR(30) UNIQUE,
@@ -66,6 +90,12 @@ INSERT INTO users (id, password, name, birthdate, department, signup_datetime) V
 ('wqtxms', 'password19', '김일성', '2006-11-04', '컴퓨터', NOW()),
 ('mzxwel', 'password20', '김정일', '1992-06-28', '전자', NOW());
 
+SELECT * FROM users;
+SELECT name, id, department  from users;
+SELECT department, COUNT(*) FROM users GROUP BY department;
+SELECT * from users where name LIKE '김%' WHERE department='컴퓨터' ORDER BY name ASC;
+
+UPDATE users SET name='홍길동';
 
 [Q]
 다음과 같은 작업을 위한 데이터베이스 명령을 알려줘.
