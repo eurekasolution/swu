@@ -16,7 +16,6 @@ function connectDB() {
     return $conn;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>

@@ -1,5 +1,6 @@
 수원대학교 SQL 데이터분석 과정
 
+<<<<<<< HEAD
 [Q] 
 
 PHP와 MySQL을 연동해서 다음의 조건에 맞는 코드를 만들어줘.
@@ -24,6 +25,8 @@ users의 모든 항목을 테이블 형태로 출력해줘.
 
 
 
+=======
+>>>>>>> 44a8ff98ac567ffdc704f22acd6be1b7ee3442b9
 CREATE TABLE mytable ( 
     -- 주석처리
     id  CHAR(30) UNIQUE,
@@ -49,6 +52,7 @@ CREATE TABLE users (
     signup_datetime DATETIME DEFAULT CURRENT_TIMESTAMP -- 가입일 및 시간 (자동으로 현재 시간 설정)
 );
 
+<<<<<<< HEAD
 다음과 같이 테이블이 정의되어 있어. 
 CREATE TABLE users (
     id VARCHAR(20) PRIMARY KEY,               -- 아이디 (최대 20자, 기본 키, 고유해야 함)
@@ -97,6 +101,10 @@ SELECT * from users where name LIKE '김%' WHERE department='컴퓨터' ORDER BY
 
 UPDATE users SET name='홍길동';
 
+=======
+
+
+>>>>>>> 44a8ff98ac567ffdc704f22acd6be1b7ee3442b9
 [Q]
 다음과 같은 작업을 위한 데이터베이스 명령을 알려줘.
 데이터베이스 이름 :  mydb
