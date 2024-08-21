@@ -1,5 +1,47 @@
 수원대학교 SQL 데이터분석 과정
-11
+
+==============================================================================
+
+1. 테이블 목록 보기
+    SHOW TABLES;
+
+2. 테이블의 구조 보기 
+
+    DESC <테이블이름>
+    DESC fake;
+
+
+CREATE TABLE fake (
+    idx     int(10) auto_increment primary key,
+    name    char(30) not null,
+    birth   date,
+    age     int
+);
+3. 테이블 구조 변경 (추가, 변경,  삭제)
+    idx, name, birth, age
+
+    [추가] 기본은 맨 뒤에 추가
+
+    ALTER TABLE 테이블이름 ADD <새로 정의> AFTER 위치
+
+    ALTER TABLE fake  ADD id char(20) AFTER name;
+
+    [변경] id -> userid , char(20) -> varchar(30)
+
+    ALTER TABLE 테이블이름 CHANGE 필명 <새로 정의>
+
+    ALTER TABLE fake CHANGE id userid varchar(30);
+
+    [삭제] 유의 사항 
+
+    일반적인 질의(Query)에서 삭제 => DELETE 
+    데이터베이스를 삭제, 테이블 삭제 ==> DROP
+
+    ALTER TABLE DROP 필드명
+    ALTER TABLE DROP userid;
+
+
+==============================================================================
 다음과 같은 조건의 PHP 프로그램을 만들고 싶어. 프로그램을 제안해 줘.
 - HTML5와 Bootstrap5를 이용
 $name1 = "강,강,고,곽,구,권,김,김,김,김,나,남,노라,류,마,문,민,박,박,봉,서,성,손,송,신,심,안,양,염,우,유,윤,이,이,이,임,
