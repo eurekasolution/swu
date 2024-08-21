@@ -247,6 +247,51 @@ INSERT INTO employee (name, didx) VALUES ('최영', (SELECT idx FROM department 
 INSERT INTO employee (name, didx) VALUES ('이황', (SELECT idx FROM department WHERE name='환경'));
 
 
+CREATE TABLE dept (
+    idx     int auto_increment primary key,
+    name    varchar(30),
+    major   varchar(30),
+    age     int default '20'
+);
+
+이런 테이블이 정의되어있을 때 데이터 30개를 다음 조건에 맞게 생성하는 스크립트를 만들어줘.
+
+- name : 역사 인물로 선택
+- major : 컴퓨터,전기,전자,기계,환경 중 하나를 랜덤하게 선택
+- age : 20-25사이에 랜던한 값 생성
+
+
+-- 랜덤한 데이터 생성 및 삽입
+INSERT INTO dept (name, major, age) VALUES ('이순신', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('세종대왕', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('안중근', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('장영실', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('김구', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('유관순', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('이성계', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('강감찬', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('박지성', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('이방원', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('을지문덕', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('김유신', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('윤봉길', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('신사임당', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('정약용', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('허준', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('최영', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('이황', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('이순신', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('세종대왕', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('안중근', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('장영실', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('김구', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('유관순', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('이성계', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('강감찬', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('박지성', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('이방원', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+INSERT INTO dept (name, major, age) VALUES ('을지문덕', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
+
 
 
 ==============================================================================
