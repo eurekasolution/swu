@@ -156,6 +156,99 @@ CREATE TABLE fake (
     SELECT '1111', password('1111'), md5('1111');
 
 
+[부서, 직원 테이블 2개를 만들자]
+
+부서 - 부서이름
+
+CREATE TABLE department (
+    idx int AUTO_INCREMENT,
+    name VARCHAR(100),
+    PRIMARY KEY(idx)  
+);
+
+CREATE TABLE department (
+    idx int AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+    // 컴퓨터, 전기, 전자, 건축
+
+    INSERT INTO department (name) VALUES ('컴퓨터');
+    INSERT INTO department (name) VALUES ('전기');
+    INSERT INTO department (name) VALUES ('삭제할 학과');
+    INSERT INTO department (name) VALUES ('전자');
+    INSERT INTO department (name) VALUES ('건축');
+    INSERT INTO department (name) VALUES ('환경');
+
+    UPDATE 테이블명 SET 필드1='새값1', 필드2='새값2' .... WHERE 조건;
+
+    UPDATE department SET name='테스트' WHERE idx='3';
+
+    DELETE FROM 테이블명 WHERE 조건;
+
+    DELETE FROM department WHERE idx='3';
+
+    INSERT INTO department (name) VALUES ('기계');
+    DELETE FROM department WHERE idx>='4' and idx<'6';
+
+    [직원] 키값 idx, name, didx
+
+    CREATE TABLE employee (
+        idx INT     AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(20),
+        didx INT,
+        FOREIGN KEY (didx) REFERENCES department(idx) 
+        ON DELETE CASCADE
+
+    );
+
+    INSERT INTO employee (name, didx) VALUES('홍길동', '1');
+    INSERT INTO employee (name, didx) VALUES('이순신', '2');
+    INSERT INTO employee (name, didx) VALUES('유관순', '9');
+    INSERT INTO employee (name, didx) VALUES('안중근', '1');
+    INSERT INTO employee (name, didx) VALUES('사임당', '9');
+
+
+    drop table department;
+    drop table employee;
+
+
+-- 부서 테이블에 데이터 삽입
+INSERT INTO department (name) VALUES ('컴퓨터');
+INSERT INTO department (name) VALUES ('전기');
+INSERT INTO department (name) VALUES ('전자');
+INSERT INTO department (name) VALUES ('기계');
+INSERT INTO department (name) VALUES ('금속');
+INSERT INTO department (name) VALUES ('환경');
+
+-- 각 부서에 직원 데이터 삽입
+INSERT INTO employee (name, didx) VALUES ('이순신', (SELECT idx FROM department WHERE name='컴퓨터'));
+INSERT INTO employee (name, didx) VALUES ('세종대왕', (SELECT idx FROM department WHERE name='컴퓨터'));
+INSERT INTO employee (name, didx) VALUES ('안중근', (SELECT idx FROM department WHERE name='컴퓨터'));
+
+INSERT INTO employee (name, didx) VALUES ('장영실', (SELECT idx FROM department WHERE name='전기'));
+INSERT INTO employee (name, didx) VALUES ('김구', (SELECT idx FROM department WHERE name='전기'));
+INSERT INTO employee (name, didx) VALUES ('유관순', (SELECT idx FROM department WHERE name='전기'));
+
+INSERT INTO employee (name, didx) VALUES ('이성계', (SELECT idx FROM department WHERE name='전자'));
+INSERT INTO employee (name, didx) VALUES ('강감찬', (SELECT idx FROM department WHERE name='전자'));
+INSERT INTO employee (name, didx) VALUES ('박지성', (SELECT idx FROM department WHERE name='전자'));
+
+INSERT INTO employee (name, didx) VALUES ('이방원', (SELECT idx FROM department WHERE name='기계'));
+INSERT INTO employee (name, didx) VALUES ('을지문덕', (SELECT idx FROM department WHERE name='기계'));
+INSERT INTO employee (name, didx) VALUES ('김유신', (SELECT idx FROM department WHERE name='기계'));
+
+INSERT INTO employee (name, didx) VALUES ('윤봉길', (SELECT idx FROM department WHERE name='금속'));
+INSERT INTO employee (name, didx) VALUES ('신사임당', (SELECT idx FROM department WHERE name='금속'));
+INSERT INTO employee (name, didx) VALUES ('정약용', (SELECT idx FROM department WHERE name='금속'));
+
+INSERT INTO employee (name, didx) VALUES ('허준', (SELECT idx FROM department WHERE name='환경'));
+INSERT INTO employee (name, didx) VALUES ('최영', (SELECT idx FROM department WHERE name='환경'));
+INSERT INTO employee (name, didx) VALUES ('이황', (SELECT idx FROM department WHERE name='환경'));
+
+
+
+
 ==============================================================================
 다음과 같은 조건의 PHP 프로그램을 만들고 싶어. 프로그램을 제안해 줘.
 - HTML5와 Bootstrap5를 이용
