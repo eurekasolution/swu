@@ -35,10 +35,76 @@ CREATE TABLE fake (
     [삭제] 유의 사항 
 
     일반적인 질의(Query)에서 삭제 => DELETE 
-    데이터베이스를 삭제, 테이블 삭제 ==> DROP
+    * 데이터베이스를 삭제, 테이블 삭제 ==> DROP
 
     ALTER TABLE DROP 필드명
     ALTER TABLE DROP userid;
+
+4. 테이블 이름 변경 ==> 오타, 명확하게 변경
+
+    문법 : RENAME TABLE 옛날이름 TO 새이름;
+
+    fake => fake_table
+
+    RENAME TABLE fake TO fake_table;
+
+
+    users 테이블
+
+    myusers
+
+    config 파일
+
+    $users = "users";
+    // $users = "myuser";
+
+    프로그램 코드 $sql = "select * from $users ");
+
+    테이블 이름을 변수화하면 유지보수가 편하다.
+    테이블 이름을 지을때는 snake 표기법으로 하는 것이 원칙.
+
+    윈도우에서 개발 ==> 리눅스 포팅
+    my_user, MyUser
+
+5. 테이블 삭제
+
+    dummy , id, pass ==> test , 1111
+
+    CREATE TABLE dummy(
+        id  varchar(20),
+        pass varchar(255)
+    );
+
+    password()
+
+    INSERT INTO dummy (id, pass) VALUES('test', password('1111'));
+    INSERT INTO dummy (id, pass) VALUES('test1', password('abcd'));
+
+    삭제(테이블)
+    문법 : DROP TABLE 테이블이름;
+
+    DROP TABLe dummy;
+
+
+6. 데이터베이스의 목록
+
+    SHOW DATABASES;
+
+    SHOW CREATE DATABASE 테이터베이스이름;
+
+    SHOW CREATE DATABASE swu; -- 문자셋을 확인하거나, 파일시스템을 확인할 때 사용.
+
+    cf. 파일시스템 : MyISAM, InnoDB, ISAM
+
+    **** : aaaa ~ zzzz, 0000 ~9999 , aa00 ~ zz99
+
+    DB삭제 : DROP
+
+    DROP DATABASE 데이터베이스이름;
+
+
+    SELECT DATABASE();  --- 이름() , 함수
+
 
 
 ==============================================================================
