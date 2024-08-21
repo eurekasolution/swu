@@ -415,6 +415,90 @@ INSERT INTO orders (memidx, modelidx, mobile, address) VALUES (1, 3, '010-6789-0
 INSERT INTO orders (memidx, modelidx, mobile, address) VALUES (2, 7, '010-7890-1234', '대전');
 INSERT INTO orders (memidx, modelidx, mobile, address) VALUES (5, 5, '010-8901-2345', '경기');
 
+주문정보 : 주문자번호, 이름, 전화, 주문전화, 제품명, 색상, 사이즈, 주소
+
+$osql = "select * from orders ";
+$oresult = mysqli_query($conn, $osql);
+$odata = mysqli_fetch_array($oresult)
+
+while($odata)
+{
+    // 
+    $memSql = "select * from members where idx='$odata["memidx"]';
+    $memResult = mysqli_query($conn, $memSql);
+    $memData = mysqli_fetch_array($memResult);
+
+    $modelSql = "select * from models  where idx='$odata["modelidx"]';
+    $modelResult = mysqli_query($conn, $modelSql);
+    $modelData = mysqli_fetch_array($modelResult);
+    // $odata[idx], $memData[name], $memData[mobile], $odata[mobile], $modelData[name]
+    $odata = mysqli_fetch_array($oresult)   
+}
+
+여러 테이블에 검색하기 (FROM 절에 여러 테이블을 넣을 수 있다.)
+SELECT
+   o.idx AS 주문번호, m.name AS 주문자이름,
+   m.mobile AS 주문휴대폰,
+   o.mobile AS 배송휴대폰,
+    model.name AS 제품명,
+    model.color AS 색상,
+    model.size AS 사이즈
+
+    FROM
+        orders AS o, members AS m, models AS model
+
+    WHERE o.memidx = m.idx AND o.modelidx = model.idx
+
+
+[ JOIN : LEFT JOIN ]
+
+    SELECT
+        o.idx AS 주문번호,
+        m.name AS 주문자이름,
+        o.mobile AS 배송휴대폰,
+        model.name AS 제품명,
+        model.color AS 색상,
+        model.size AS 사이즈     
+    FROM
+        orders AS o
+    LEFT JOIN
+        members AS m ON o.memidx = m.idx
+    LEFT JOIN
+        models AS model ON o.modelidx = model.idx
+
+
+[UNION] 수학의 합집합
+    유의 사항 : 열의 수와 데이터타입이 같아야 한다.
+
+    예:
+        SELECT name AS 이름 FROM members
+        UNION
+        SELECT name AS 제품명 FROM models
+
+    다음 처럼 하면 안된다.
+
+        SELECT idx AS 이름 FROM members
+        UNION
+        SELECT name AS 제품명 FROM models
+
+
+SELECT major FROM dept;
+SELECT DISTINCT major FROM dept;
+
+[ GROUP BY ~~ HAVING ~~]
+
+SELECT major, COUNT(*) as manCount 
+    FROM dept
+    GROUP BY major;
+
+SELECT major, COUNT(*) as manCount 
+    FROM dept
+    GROUP BY major
+    HAVING COUNT(*) > 5;
+
+    WHERE 절과 HAVING의 차이가 
+        WHERE : 그룹화되기 전에 필터링
+        HAVING : 그룹해놓고 난 후에 필터링
 
 ==============================================================================
 다음과 같은 조건의 PHP 프로그램을 만들고 싶어. 프로그램을 제안해 줘.
