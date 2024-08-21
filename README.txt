@@ -105,6 +105,55 @@ CREATE TABLE fake (
 
     SELECT DATABASE();  --- 이름() , 함수
 
+    $sql = "select name, birth, CONCAT(name, bith) AS namebirth from fake_table;
+    $result = mysqli_query($conn, $sql);
+    $data = mysqli_fetch_array($result);
+
+    while($data)
+    {
+        //name,  CONCAT(name, bith)
+        echo "$name $data[namebirth]<br>"; // echo $name . "<br>";
+        $data = mysqli_fetch_array($result);
+    }
+
+    Alias name : AS 별명
+
+    부분문자열 추출 : Substring() // C: substr()
+
+    SELECT SUBSTRING('abcde', 시작번호, 글자수); // 1부터 센다. 
+
+    SELECT SUBSTING('abcde', 2, 3);
+    SELECT name, SUBSTRING(birth, 1, 4) AS year FROM fake_table;
+    LENGTH(문자열); // 한글은 3바이트
+    LEFT(문자열, 글자수);
+
+    SELECT name, LENGTH(name) as namelen, LEFT(name, 1) as first from fake_table;
+
+    Date('y-m-d') // 24-08-21
+
+    SELECT DATE_ADD(now(), INTERVAL 12 DAY)
+
+    SELECT DATE_ADD(now(), INTERVAL 2 MONTH); 
+    -- 단위 : DAY, MONTH, YEAR, HOUR, ..
+
+    은행이자 계산 : 2024-01-01 , 오늘까지 며칠이 지났는지..
+
+    SELECT DATEDIFF(now(), birth) as diff from fake_table;
+    SELECT DATEDIFF(birth, now()) as diff from fake_table;
+    SELECT birth, name, DATEDIFF(birth, now()) as diff from fake_table;
+    SELECT birth, name, ABS(DATEDIFF(birth, now())) as diff from fake_table;
+
+    2000년 이후 출생자의 수
+
+    SELECT COUNT(*) AS cnt FROM fake_table WHERE birth>='2000-01-01';
+
+    2000 이전 : old, 이후 : young
+
+    SELECT name, birth, IF(birth < '2000-01-01' , 'old', 'young') AS textold FROM fake_table;
+
+    데이터 암호화
+
+    SELECT '1111', password('1111'), md5('1111');
 
 
 ==============================================================================

@@ -20,6 +20,16 @@
         </form>
 
         <?php
+
+        $prefix = "__#_swu_%%__";
+        $pass = "1111";
+        $authPath = md5($prefix . $pass);
+
+        echo " 암호화 값 : $authPath<br>";
+
+        // aaaa, zzzz
+
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $datacount = intval($_POST["datacount"]);
 
