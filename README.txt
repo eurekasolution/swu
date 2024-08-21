@@ -293,6 +293,128 @@ INSERT INTO dept (name, major, age) VALUES ('이방원', ELT(FLOOR(RAND() * 5) +
 INSERT INTO dept (name, major, age) VALUES ('을지문덕', ELT(FLOOR(RAND() * 5) + 1, '컴퓨터', '전기', '전자', '기계', '환경'), FLOOR(RAND() * 6) + 20);
 
 
+$sql = SELECT name, major, age from dept WHERE
+    major in ( SELECT major FROM dept where name='안중근')
+$result = mysqli_query($conn, $sql);
+$data = mysqli_fetch_array($result);
+
+$sql = "SELECT major FROM dept where name='안중근'";
+$result = mysqli_query($conn, $sql);
+$data = mysqli_fetch_array($result);
+
+$major = $data["major"];
+$sql = "select name, major, age from dept where major='$major' ";
+$result = mysqi_query($conn, $sql);
+$data = mysqli_fetch_array($result);
+while($data)
+{
+    // $data["name"] , $data["major"], $data["age"];
+    $data = mysqli_fetch_array($result);
+}
+
+SELECT name, major, age from dept;
+SELECT dept.name, dept.major, dept.age from dept;
+SELECT d.name, d.major, d.age from dept AS d;
+SELECT d.name, d.major, d.age from dept  d;
+
+필드 선택 ==> 테이블명.필드값
+PK : idx가 이름 같은 경우가 많아서. a.idx b.idx
+
+
+쇼핑몰 : 회원테이블, 제품테이블, 주문테이블
+
+// 이름, 아이디, 전화
+CREATE TABLE members (
+    idx INT auto_increment primary key,
+
+    name    char(20),
+    id      char(20),
+    mobile  char(20)
+);
+
+CREATE TABLE models (
+    idx INT auto_increment primary key,
+    name    char(20),
+    color   char(20),
+    size    char(20)
+);
+
+CREATE TABLE orders (
+    idx INT auto_increment primary key,
+    memidx  INT, -- Foreign key
+    modelidx INT,
+    mobile  char(20),
+    address char(100),
+    FOREIGN KEY(memidx) REFERENCES members(idx),
+    FOREIGN KEY(modelidx) REFERENCES models(idx)
+
+)
+[Q] 다음과 같이 스키마가 정의되었다.
+CREATE TABLE members (
+    idx INT auto_increment primary key,
+
+    name    char(20),
+    id      char(20),
+    mobile  char(20)
+);
+
+CREATE TABLE models (
+    idx INT auto_increment primary key,
+    name    char(20),
+    color   char(20),
+    size    char(20)
+);
+
+CREATE TABLE orders (
+    idx INT auto_increment primary key,
+    memidx  INT, -- Foreign key
+    modelidx INT,
+    mobile  char(20),
+    address char(100),
+    FOREIGN KEY(memidx) REFERENCES members(idx),
+    FOREIGN KEY(modelidx) REFERENCES models(idx)
+    
+);
+다음 조건에 맞도록 데이터를 넣은 스크립트를 만들어줘.
+members는 5개의 데이터를 채워줘.
+- name : 역사인물 이름
+- id : test, abcd, xyz, admin, hello
+- mobile : 010-[0-9]{4}-[0-9]{4} 형태로 임의의 값으로 채움
+
+models는 다음과 같이 10개를 채워줘.
+- name : 나이키, 아디다스와 같은 브랜드 이름을 한글로 채움
+- color : 빨강,파랑,노랑,흰색중 랜덤하게 채움
+- size : S,M,L,XL 중 하나 랜덤
+
+oders는 다음과 같이 3개를 채워줘.
+- memidx, modelidx는 위 테이블 정보중 하나를 임의로 선택
+- mobile : 010-[0-9]{4}-[0-9]{4} 형태로 임의의 값으로 채움
+- address : 서울, 대전, 경기, 제주 중 하나
+
+-- members 테이블 데이터 삽입
+INSERT INTO members (name, id, mobile) VALUES ('이순신', 'test', '010-1234-5678');
+INSERT INTO members (name, id, mobile) VALUES ('세종대왕', 'abcd', '010-2345-6789');
+INSERT INTO members (name, id, mobile) VALUES ('안중근', 'xyz', '010-3456-7890');
+INSERT INTO members (name, id, mobile) VALUES ('장영실', 'admin', '010-4567-8901');
+INSERT INTO members (name, id, mobile) VALUES ('김구', 'hello', '010-5678-9012');
+
+-- models 테이블 데이터 삽입
+INSERT INTO models (name, color, size) VALUES ('나이키', '빨강', 'M');
+INSERT INTO models (name, color, size) VALUES ('아디다스', '파랑', 'L');
+INSERT INTO models (name, color, size) VALUES ('뉴발란스', '노랑', 'S');
+INSERT INTO models (name, color, size) VALUES ('리복', '흰색', 'XL');
+INSERT INTO models (name, color, size) VALUES ('언더아머', '빨강', 'M');
+INSERT INTO models (name, color, size) VALUES ('푸마', '파랑', 'L');
+INSERT INTO models (name, color, size) VALUES ('휠라', '노랑', 'S');
+INSERT INTO models (name, color, size) VALUES ('르꼬끄', '흰색', 'XL');
+INSERT INTO models (name, color, size) VALUES ('데상트', '빨강', 'M');
+INSERT INTO models (name, color, size) VALUES ('캘빈클라인', '파랑', 'L');
+
+-- orders 테이블 데이터 삽입
+INSERT INTO orders (memidx, modelidx, mobile, address) VALUES (1, 3, '010-6789-0123', '서울');
+INSERT INTO orders (memidx, modelidx, mobile, address) VALUES (2, 7, '010-7890-1234', '대전');
+INSERT INTO orders (memidx, modelidx, mobile, address) VALUES (5, 5, '010-8901-2345', '경기');
+
 
 ==============================================================================
 다음과 같은 조건의 PHP 프로그램을 만들고 싶어. 프로그램을 제안해 줘.
