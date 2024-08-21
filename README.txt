@@ -500,6 +500,42 @@ SELECT major, COUNT(*) as manCount
         WHERE : 그룹화되기 전에 필터링
         HAVING : 그룹해놓고 난 후에 필터링
 
+[VIEW] 가상 테이블
+
+CREATE OR REPLACE VIEW test_v AS
+    SELECT
+        o.idx AS 주문번호,
+        m.name AS 주문자이름,
+        o.mobile AS 배송휴대폰,
+        model.name AS 제품명,
+        model.color AS 색상,
+        model.size AS 사이즈     
+    FROM
+        orders AS o
+    LEFT JOIN
+        members AS m ON o.memidx = m.idx
+    LEFT JOIN
+        models AS model ON o.modelidx = model.idx
+
+    INSERT INTO orders (memidx, modelidx, mobile, address) VALUES (5, 5, '010-1111-2222', '제주');
+
+
+CREATE OR REPLACE VIEW test2_v AS
+    SELECT
+        o.idx AS 주문번호1,
+        m.name AS 주문자이름,
+        o.mobile AS 배송휴대폰,
+        model.name AS 제품명,
+        model.color AS 색상,
+        model.size AS 사이즈     
+    FROM
+        orders AS o
+    LEFT JOIN
+        members AS m ON o.memidx = m.idx
+    LEFT JOIN
+        models AS model ON o.modelidx = model.idx
+
+
 ==============================================================================
 다음과 같은 조건의 PHP 프로그램을 만들고 싶어. 프로그램을 제안해 줘.
 - HTML5와 Bootstrap5를 이용
