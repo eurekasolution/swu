@@ -173,6 +173,20 @@ N-gram, Deep Learning
 
     300 - 350 /10
 
+
+    SQL Injection : 
+
+    id : test
+    pass : 1234
+
+    $id = "test";  // xxx' OR 2>1 -- 
+    $pass = "1234"; // 
+
+    $sql = "SELECT * FROM users where id='$id' and pass='$pass' ";
+    $sql = "SELECT * FROM users where id='xxxx' OR 2>1 -- ' and pass=''
+
+
+
 ==============================================================================
 Day 2
 ==============================================================================

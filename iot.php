@@ -42,8 +42,8 @@ function connectDB() {
 $conn = connectDB();
 
 // 온도와 습도 랜덤 생성
-$hum = mt_rand(800, 900) / 10; // 80.0 ~ 90.0 사이의 실수 생성
-$temp = mt_rand(300, 350) / 10; // 30.0 ~ 35.0 사이의 실수 생성
+$hum = mt_rand(800, 810) / 10; // 80.0 ~ 90.0 사이의 실수 생성
+$temp = mt_rand(310, 315) / 10; // 30.0 ~ 35.0 사이의 실수 생성
 
 // 데이터 삽입 쿼리
 $sql = "INSERT INTO iot (temp, hum, device, time) VALUES ('$temp', '$hum', '1', now())";
