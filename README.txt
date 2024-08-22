@@ -197,7 +197,28 @@ N-gram, Deep Learning
     INSERT INTO my_table (id, name, pass) VALUES('admin', '관리자', '1111');
 
 
-    
+    mysql -u swu swu -p
+
+    mysqldump -u 아이디 데이터베이스이름 -p > 저장할파일이름
+
+    mysqldump -u swu swu -p > swu-2024-08-22-1600.db.sql
+
+
+[PORTTING]
+
+    SERVER : test.com (Linux)
+
+    옮길파일 : 작업한 php, htm 파일
+                dump 파일
+
+
+            
+document.getElementById('swuchart')
+docuent.queryString("#swuchart");
+$(#swuchart)
+
+ jQuery + Ajaxt
+
 
 ==============================================================================
 Day 2
