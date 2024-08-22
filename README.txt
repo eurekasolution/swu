@@ -1,5 +1,167 @@
 수원대학교 SQL 데이터분석 과정
+==============================================================================
+Day 3
+==============================================================================
 
+시작할 때는 C:/xampp/xampp_contro.exe 파일을 실행해
+Apache와 MySQL을 실행시켜야 합니다.
+
+CREATE TABLE test_table (
+    idx     int     auto_increment primary key,
+    name    VARCHAR(20),
+    -- 추가
+    INDEX idx_name(name)
+);
+
+테이블이 만들어진 상태에서 추가
+CREATE INDEX idx_name ON test_table(name);
+
+
+INSERT INTO test_table (name) VALUES ('홍길동');
+INSERT INTO test_table (name) VALUES ('이순신');
+
+인덱스를 확인
+
+    SHOW INDEX FROM test_table;
+
+
+    SELECT * FROM fake_table;
+
+    기억하라.
+    1. 데이터의 양이 늘어나면 검색속도가 지수적으로 증가.
+    2. H/W의 영향을 받는다.
+
+N-gram, Deep Learning
+
+    수원대학교
+    1 UNI-gram : 수, 원, 대, 학, 교 (5)
+    2 BI-gram : 수원, 원대, 대학, 학교(4)
+    3 Tri-gram : 수원대, 원대하, 대학교(3)
+    4 4-gram : 수원대학, 원대학교(2)
+    5 5-gram : 수원대학교(1)
+
+    5 * 6 / 2 = 15
+
+    동해물과 백두산이 마르고 닳도록 ..     ( 사전데이터 : 60만개 )
+
+
+
+    핵심 : 데이터베이스는 파일 시스템이다 ==> 느리다 ==> 병목지점
+
+    XML ==> JSON ( JavaScript Object Notation)
+
+    key : value
+
+    객체 { }, 배열 []
+
+    Case 1 : 사람을 표현
+
+    { 
+        "name":"홍길동",
+        "age" : 22,
+        "company" : "수원대학교"
+    }
+
+    Case 2 : 객체내부에 객체를 포함하는 경우
+
+    { 
+        "name":"홍길동",
+        "age" : 22,
+        "company" : {
+            "name" : "수원대학교",
+            "url" : "https://suwon.ac.kr"
+        }
+    }
+
+    Case 3 : 객체가 객체만 포함
+
+    { 
+        "person" : { 
+            "name": "홍길동",
+            "age" : 22,
+            "mobile": "010-1234-5678"
+        },
+        "company" : {
+            "name" : "수원대학교",
+            "url" : "https://suwon.ac.kr"
+        }
+    }    
+
+    Case 3 : 배열 데이터
+
+    { 
+        "employee" : [ 
+            {
+                "name" : "홍길동",
+                "age" : 22
+            }, 
+            {
+                "name" : "이순신",
+                "age" : 45
+            },
+            {
+                "name" : "을지문덕",
+                "age" : 56
+            }
+        ],
+
+        "employer": [ 
+            { 
+                "company" : "수원대학교"
+            }, 
+            { 
+                "company" : "단국대학교"
+            }
+        ]
+    }  
+
+    Case 4: 활용 예 (인물관계)
+
+    {
+        "nodes" : [
+            {
+                "name": "홍길동"
+            }, 
+            {
+                "name": "홍대감"
+            }, 
+            {
+                "name": "정약용"
+            }, 
+            {
+                "name" : "추사"
+            }, 
+            {
+                "name" : "정약전
+            }
+        ],
+        "links" : [
+            {
+                "source": "홍길동",
+                "target": "홍대감",
+                "relation": "부자"
+            }, 
+            {
+                "source": "홍길동",
+                "target": "정약용",
+                "relation": "친구"
+            },
+            {
+                "source": "정약용",
+                "target": "추사",
+                "relation": "사제"
+            },
+            {
+                "source": "정약용",
+                "target": "정약전",
+                "relation": "형제"
+            }
+
+        ]
+    }
+
+==============================================================================
+Day 2
 ==============================================================================
 
 1. 테이블 목록 보기
@@ -535,7 +697,8 @@ CREATE OR REPLACE VIEW test2_v AS
     LEFT JOIN
         models AS model ON o.modelidx = model.idx
 
-
+==============================================================================
+Day 1
 ==============================================================================
 다음과 같은 조건의 PHP 프로그램을 만들고 싶어. 프로그램을 제안해 줘.
 - HTML5와 Bootstrap5를 이용

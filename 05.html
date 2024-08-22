@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인물 관계망</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.6;
+            stroke-width: 2px;
+        }
+        .node text {
+            pointer-events: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .relationship {
+            font-size: 12px;
+            fill: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center my-4">인물 관계망</h1>
+    <div id="graph" class="d-flex justify-content-center"></div>
+</div>
+
+<!-- D3.js v3 -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+    // JSON 데이터
+    var graph = {
+        "nodes": [
+            {"id": "홍길동"},
+            {"id": "홍대감"},
+            {"id": "정약용"},
+            {"id": "추사"},
+            {"id": "정약전"}
+        ],
+        "links": [
+            {"source": 0, "target": 1, "relationship": "부자"},
+            {"source": 0, "target": 2, "relationship": "친구"},
+            {"source": 2, "target": 3, "relationship": "사제"},
+            {"source": 2, "target": 4, "relationship": "형제"}
+        ]
+    };
+
+    // SVG 설정
+    var width = 800, height = 600;
+    var svg = d3.select("#graph").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // Force Layout 설정
+    var force = d3.layout.force()
+        .nodes(graph.nodes)
+        .links(graph.links)
+        .size([width, height])
+        .linkDistance(150)
+        .charge(-500)
+        .start();
+
+    // 링크 생성
+    var link = svg.selectAll(".link")
+        .data(graph.links)
+        .enter().append("line")
+        .attr("class", "link");
+
+    // 노드 생성
+    var node = svg.selectAll(".node")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .call(force.drag);
+
+    // 노드에 원 추가
+    node.append("circle")
+        .attr("r", 20)
+        .style("fill", "#69b3a2");
+
+    // 노드에 텍스트 추가
+    node.append("text")
+        .attr("dx", -10)
+        .attr("dy", ".35em")
+        .text(function(d) { return d.id; });
+
+    // 링크에 관계 표시
+    var relationship = svg.selectAll(".relationship")
+        .data(graph.links)
+        .enter().append("text")
+        .attr("class", "relationship")
+        .attr("text-anchor", "middle")
+        .text(function(d) { return d.relationship; });
+
+    // Force Layout의 tick 이벤트
+    force.on("tick", function() {
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+        node.attr("transform", function(d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+
+        relationship.attr("x", function(d) { return (d.source.x + d.target.x) / 2; })
+                    .attr("y", function(d) { return (d.source.y + d.target.y) / 2; });
+    });
+</script>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
