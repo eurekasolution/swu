@@ -160,6 +160,19 @@ N-gram, Deep Learning
         ]
     }
 
+    온도/습도.
+
+    CREATE TABLE iot (
+        idx     int AUTO_INCREMENT primary key,
+        temp    float   default '0.0',
+        hum     float   default '0.0',
+        device  int     default '1',
+        time    datetime
+    );
+
+
+    300 - 350 /10
+
 ==============================================================================
 Day 2
 ==============================================================================
