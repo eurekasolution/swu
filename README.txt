@@ -186,6 +186,18 @@ N-gram, Deep Learning
     $sql = "SELECT * FROM users where id='xxxx' OR 2>1 -- ' and pass=''
 
 
+    CREATE TABLE my_table (
+        idx     int     auto_increment primary key,
+        id      varchar(20) UNIQUE,
+        name    varchar(20),
+        pass    varchar(255)
+    );
+
+    INSERT INTO my_table (id, name, pass) VALUES('test', '테스트', '1111');
+    INSERT INTO my_table (id, name, pass) VALUES('admin', '관리자', '1111');
+
+
+    
 
 ==============================================================================
 Day 2
