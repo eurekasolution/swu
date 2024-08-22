@@ -45,6 +45,9 @@ $conn = connectDB();
     if($data)
     {
       echo "성공 : 이름 : $data[name]<br>";
+    }else
+    {
+      echo "실패 <br>";
     }
   }
 
