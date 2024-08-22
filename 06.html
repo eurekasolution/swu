@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수원대학교 SQL 데이터분석 과정</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">SWU SQL 과정</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <!-- 메뉴 1 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menu1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        메뉴1
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="menu1">
+                        <li><a class="dropdown-item" href="#">메뉴 1-1</a></li>
+                        <li><a class="dropdown-item" href="#">메뉴 1-2</a></li>
+                        <li><a class="dropdown-item" href="#">메뉴 1-3</a></li>
+                    </ul>
+                </li>
+                <!-- 메뉴 2 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menu2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        메뉴2
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="menu2">
+                        <li><a class="dropdown-item" href="#">메뉴 2-1</a></li>
+                        <li><a class="dropdown-item" href="#">메뉴 2-2</a></li>
+                    </ul>
+                </li>
+                <!-- 메뉴 3 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menu3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        메뉴3
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="menu3">
+                        <li><a class="dropdown-item" href="#">메뉴 3-1</a></li>
+                        <li><a class="dropdown-item" href="#">메뉴 3-2</a></li>
+                        <li><a class="dropdown-item" href="#">메뉴 3-3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Body -->
+<div class="container mt-5">
+    <h1 class="text-center mb-4">수원대학교 SQL 데이터분석 과정</h1>
+    <div class="row">
+        <div class="col-12 mb-3">
+            <label for="text" class="form-label">텍스트 입력</label>
+            <textarea class="form-control" id="text" name="text" rows="4" placeholder="여기에 텍스트를 입력하세요"></textarea>
+        </div>
+        <div class="col-12 mb-3">
+            <label for="count" class="form-label">숫자 입력</label>
+            <input type="number" class="form-control" id="count" name="count" placeholder="숫자를 입력하세요">
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
